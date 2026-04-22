@@ -8,42 +8,43 @@
   <style>
     body {
       margin: 0;
-      font-family: Arial, sans-serif;
-      background: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
+      font-family: 'Segoe UI', Arial, sans-serif;
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100vh;
       text-align: center;
-      overflow: hidden;
+      
+      /* Fondo Pleyades */
+      background: url('https://images-assets.nasa.gov/image/PIA21422/PIA21422~orig.jpg') no-repeat center center/cover;
+      position: relative;
     }
 
+    /* Overlay oscuro para mejor contraste */
     body::before {
       content: "";
       position: absolute;
       width: 100%;
       height: 100%;
-      background: rgba(0,0,0,0.6);
+      background: rgba(0, 0, 0, 0.65);
       top: 0;
       left: 0;
-      z-index: 0;
     }
 
     .container {
-      max-width: 600px;
       position: relative;
-      z-index: 2;
+      z-index: 1;
+      max-width: 600px;
+      padding: 20px;
       backdrop-filter: blur(6px);
-      padding: 30px;
-      border-radius: 20px;
       background: rgba(0,0,0,0.4);
+      border-radius: 12px;
     }
 
     h1 {
       font-size: 3rem;
       margin-bottom: 10px;
-      text-shadow: 0 0 10px #00c3ff;
     }
 
     p {
@@ -66,8 +67,8 @@
       100% { transform: rotate(360deg); }
     }
 
-    /* FORM */
-    .email-box {
+    /* Formulario */
+    form {
       margin-top: 20px;
     }
 
@@ -75,26 +76,24 @@
       padding: 12px;
       width: 70%;
       border: none;
-      border-radius: 10px;
+      border-radius: 6px;
       outline: none;
-      font-size: 1rem;
+      margin-bottom: 10px;
     }
 
     button {
       padding: 12px 20px;
       border: none;
-      border-radius: 10px;
+      border-radius: 6px;
       background: #00c3ff;
       color: #000;
       font-weight: bold;
       cursor: pointer;
-      margin-left: 10px;
       transition: 0.3s;
     }
 
     button:hover {
-      background: #00e0ff;
-      box-shadow: 0 0 15px #00c3ff;
+      background: #00a0cc;
     }
 
     footer {
@@ -103,83 +102,41 @@
       color: #aaa;
     }
 
-    /* OVNI */
-    .ufo {
-      position: absolute;
-      top: 20%;
-      width: 120px;
-      z-index: 1;
-      animation: fly 12s linear infinite, float 3s ease-in-out infinite;
-      filter: drop-shadow(0 0 15px #00e0ff);
+    .contact {
+      margin-top: 10px;
+      font-size: 0.9rem;
+      color: #ccc;
     }
 
-    @keyframes fly {
-      0% {
-        left: -150px;
-        transform: scale(0.8) rotate(5deg);
-      }
-      50% {
-        transform: scale(1) rotate(-5deg);
-      }
-      100% {
-        left: 110%;
-        transform: scale(0.8) rotate(5deg);
-      }
-    }
-
-    @keyframes float {
-      0%, 100% {
-        transform: translateY(0px);
-      }
-      50% {
-        transform: translateY(20px);
-      }
+    .contact a {
+      color: #00c3ff;
+      text-decoration: none;
     }
 
   </style>
 </head>
 
 <body>
-
-  <!-- OVNI -->
-  <img class="ufo" src="https://pngimg.com/uploads/ufo/ufo_PNG71607.png" alt="OVNI">
-
   <div class="container">
-    <h1>🚀 Under Construction</h1>
-    <p>We're preparing something incredible from the Pleiades…</p>
+    <h1>🚧 Under Construction 🚧</h1>
+    <p>We're preparing something incredible from the Pleiades… Enrique Castillo Rincon</p>
 
     <div class="loader"></div>
 
-    <div class="email-box">
-      <input type="email" id="email" placeholder="Your email address">
-      <button onclick="submitEmail()">notify me</button>
+    <!-- Formulario -->
+    <form action="#" method="POST">
+      <input type="email" name="email" placeholder="Your email address" required>
+      <br>
+      <button type="submit">Notify me</button>
+    </form>
+
+    <div class="contact">
+      Contact us: <a href="mailto:zikmer@gmail.com">zikmer@gmail.com</a>
     </div>
 
     <footer>
-      &copy; 2026 | enriquecastillorincon.com
+      © 2026 | enriquecastillorincon.com | All Rights Reserved
     </footer>
   </div>
-
-  <!-- sonido -->
-  <audio id="spaceSound">
-    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4f1c5b2d62.mp3?filename=space-ambient-110397.mp3" type="audio/mpeg">
-  </audio>
-
-  <script>
-    function submitEmail() {
-      const email = document.getElementById("email").value;
-
-      if(email === "" || !email.includes("@")){
-        alert("Enter a valid email address");
-        return;
-      }
-
-      document.getElementById("spaceSound").play();
-
-      alert("👽 Signal received. We will contact you soon.");
-      document.getElementById("email").value = "";
-    }
-  </script>
-
 </body>
 </html>
