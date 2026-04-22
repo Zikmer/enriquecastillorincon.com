@@ -4,29 +4,53 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Under Construction</title>
+
   <style>
     body {
       margin: 0;
       font-family: Arial, sans-serif;
-      background: linear-gradient(135deg, #111, #333);
+      background: url('https://images.unsplash.com/photo-1446776811953-b23d57bd21aa?q=80&w=1920&auto=format&fit=crop') no-repeat center center/cover;
       color: #fff;
       display: flex;
       align-items: center;
       justify-content: center;
       height: 100vh;
       text-align: center;
+      overflow: hidden;
     }
+
+    body::before {
+      content: "";
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.6);
+      top: 0;
+      left: 0;
+      z-index: 0;
+    }
+
     .container {
       max-width: 600px;
+      position: relative;
+      z-index: 2;
+      backdrop-filter: blur(6px);
+      padding: 30px;
+      border-radius: 20px;
+      background: rgba(0,0,0,0.4);
     }
+
     h1 {
       font-size: 3rem;
       margin-bottom: 10px;
+      text-shadow: 0 0 10px #00c3ff;
     }
+
     p {
       font-size: 1.2rem;
       margin-bottom: 20px;
     }
+
     .loader {
       border: 5px solid #f3f3f3;
       border-top: 5px solid #00c3ff;
@@ -36,25 +60,126 @@
       animation: spin 1s linear infinite;
       margin: 20px auto;
     }
+
     @keyframes spin {
       0% { transform: rotate(0deg); }
       100% { transform: rotate(360deg); }
     }
+
+    /* FORM */
+    .email-box {
+      margin-top: 20px;
+    }
+
+    input[type="email"] {
+      padding: 12px;
+      width: 70%;
+      border: none;
+      border-radius: 10px;
+      outline: none;
+      font-size: 1rem;
+    }
+
+    button {
+      padding: 12px 20px;
+      border: none;
+      border-radius: 10px;
+      background: #00c3ff;
+      color: #000;
+      font-weight: bold;
+      cursor: pointer;
+      margin-left: 10px;
+      transition: 0.3s;
+    }
+
+    button:hover {
+      background: #00e0ff;
+      box-shadow: 0 0 15px #00c3ff;
+    }
+
     footer {
       margin-top: 20px;
       font-size: 0.9rem;
       color: #aaa;
     }
+
+    /* OVNI */
+    .ufo {
+      position: absolute;
+      top: 20%;
+      width: 120px;
+      z-index: 1;
+      animation: fly 12s linear infinite, float 3s ease-in-out infinite;
+      filter: drop-shadow(0 0 15px #00e0ff);
+    }
+
+    @keyframes fly {
+      0% {
+        left: -150px;
+        transform: scale(0.8) rotate(5deg);
+      }
+      50% {
+        transform: scale(1) rotate(-5deg);
+      }
+      100% {
+        left: 110%;
+        transform: scale(0.8) rotate(5deg);
+      }
+    }
+
+    @keyframes float {
+      0%, 100% {
+        transform: translateY(0px);
+      }
+      50% {
+        transform: translateY(20px);
+      }
+    }
+
   </style>
 </head>
+
 <body>
+
+  <!-- OVNI -->
+  <img class="ufo" src="https://pngimg.com/uploads/ufo/ufo_PNG71607.png" alt="OVNI">
+
   <div class="container">
-    <h1>🚧 Site Under Construction 🚧</h1>
-    <p>We're working hard to bring you something amazing. Come back soon!.</p>
+    <h1>🚀 Under Construction</h1>
+    <p>We're preparing something incredible from the Pleiades…</p>
+
     <div class="loader"></div>
+
+    <div class="email-box">
+      <input type="email" id="email" placeholder="Your email address">
+      <button onclick="submitEmail()">notify me</button>
+    </div>
+
     <footer>
-      &copy; Copyright © 2026 | enriquecastillorincon.com | All Rights Reserved
+      &copy; 2026 | enriquecastillorincon.com
     </footer>
   </div>
+
+  <!-- sonido -->
+  <audio id="spaceSound">
+    <source src="https://cdn.pixabay.com/download/audio/2022/03/15/audio_4f1c5b2d62.mp3?filename=space-ambient-110397.mp3" type="audio/mpeg">
+  </audio>
+
+  <script>
+    function submitEmail() {
+      const email = document.getElementById("email").value;
+
+      if(email === "" || !email.includes("@")){
+        alert("Ingresa un correo válido");
+        return;
+      }
+
+      document.getElementById("spaceSound").play();
+
+      alert("👽 Señal recibida. Te contactaremos pronto.");
+      document.getElementById("email").value = "";
+    }
+  </script>
+
 </body>
 </html>
